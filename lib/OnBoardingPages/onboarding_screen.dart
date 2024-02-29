@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:interenshala_assignment/Pages/login.dart';
+import 'package:interenshala_assignment/RegisterPages/signup.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 
 class OnboardingScreen extends StatefulWidget {
@@ -18,7 +18,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       footer: ElevatedButton(
         style: const ButtonStyle(
           backgroundColor:
-              MaterialStatePropertyAll(Color.fromARGB(255, 117, 179, 119)),
+              MaterialStatePropertyAll(Color.fromARGB(255, 85, 236, 90)),
         ),
         onPressed: () {},
         child: const Text(
@@ -31,7 +31,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       ),
       decoration: const PageDecoration(
         bodyPadding: EdgeInsets.all(10.0),
-        footerPadding: EdgeInsets.symmetric(vertical: 50),
+        footerPadding: EdgeInsets.symmetric(
+          vertical: 50,
+        ),
         titleTextStyle: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
       ),
     ),
@@ -42,7 +44,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       footer: ElevatedButton(
         style: const ButtonStyle(
           backgroundColor:
-              MaterialStatePropertyAll(Color.fromARGB(255, 179, 125, 121)),
+              MaterialStatePropertyAll(Color.fromARGB(255, 186, 94, 87)),
         ),
         onPressed: () {},
         child: const Text(
@@ -64,7 +66,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       footer: ElevatedButton(
         style: const ButtonStyle(
           backgroundColor:
-              MaterialStatePropertyAll(Color.fromARGB(255, 232, 222, 129)),
+              MaterialStatePropertyAll(Color.fromARGB(255, 232, 218, 85)),
         ),
         onPressed: () {},
         child: const Text(
@@ -117,7 +119,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(
-        builder: (context) => const Login(),
+        builder: (context) => const SignUp(),
       ),
     );
   }

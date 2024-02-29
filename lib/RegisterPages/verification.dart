@@ -61,26 +61,24 @@ class _VerificationState extends State<Verification> {
             const SizedBox(
               height: 40,
             ),
-            Container(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  const Text(
-                    "Attach proof of registration",
-                    style: TextStyle(fontSize: 20),
-                  ),
-                  IconButton(
-                    style: const ButtonStyle(
-                      iconSize: MaterialStatePropertyAll(40),
-                      iconColor: MaterialStatePropertyAll(
-                        Color.fromARGB(255, 201, 94, 61),
-                      ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                const Text(
+                  "Attach proof of registration",
+                  style: TextStyle(fontSize: 20),
+                ),
+                IconButton(
+                  style: const ButtonStyle(
+                    iconSize: MaterialStatePropertyAll(40),
+                    iconColor: MaterialStatePropertyAll(
+                      Color.fromARGB(255, 201, 94, 61),
                     ),
-                    onPressed: () {},
-                    icon: const Icon(Icons.camera_alt),
                   ),
-                ],
-              ),
+                  onPressed: () {},
+                  icon: const Icon(Icons.camera_alt),
+                ),
+              ],
             ),
             const SizedBox(height: 180),
             Container(
@@ -108,7 +106,8 @@ class _VerificationState extends State<Verification> {
                             Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const VerificationSubmit()),
+                                  builder: (context) =>
+                                      const VerificationSubmit()),
                             );
                           },
                         );

@@ -1,5 +1,4 @@
 import "package:flutter/material.dart";
-import "package:interenshala_assignment/Pages/login.dart";
 
 class ResetPassword extends StatefulWidget {
   const ResetPassword({super.key});
@@ -122,7 +121,7 @@ class _ResetPasswordState extends State<ResetPassword> {
                         Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const Login()),
+                              builder: (context) => const ResetPassword()),
                         );
                       },
                     );

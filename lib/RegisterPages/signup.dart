@@ -1,4 +1,6 @@
+import "package:cloud_firestore/cloud_firestore.dart";
 import "package:flutter/material.dart";
+import "package:interenshala_assignment/Pages/login.dart";
 import "package:interenshala_assignment/RegisterPages/farm_info.dart";
 
 class SignUp extends StatefulWidget {
@@ -22,6 +24,42 @@ class _SignUpState extends State<SignUp> {
   final phoneNumberController = TextEditingController();
   final passwordController = TextEditingController();
   final reEnteredPasswodController = TextEditingController();
+
+  CollectionReference farmer = FirebaseFirestore.instance.collection('farmer');
+
+  Future<void> addUser() {
+    print("pavan addUser");
+    return farmer
+        .add({
+          'fullname': fullName,
+          'emailAddress': emailAddress,
+          'phoneNumber': phoneNumber,
+          'password': password,
+          'reEnteredPassword': reEnteredPassword,
+        })
+        .then((value) => print("New User Add"))
+        .catchError(
+          (error) => print("Failed to add User $error"),
+        );
+  }
+
+  @override
+  void dispose() {
+    fullNameController.dispose();
+    emailAddressController.dispose();
+    phoneNumberController.dispose();
+    passwordController.dispose();
+    reEnteredPasswodController.dispose();
+    super.dispose();
+  }
+
+  clearText() {
+    fullNameController.clear();
+    emailAddressController.clear();
+    phoneNumberController.clear();
+    passwordController.clear();
+    reEnteredPasswodController.clear();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -74,22 +112,22 @@ class _SignUpState extends State<SignUp> {
                     width: 60,
                     child: InkWell(
                       onTap: () {
-                        // Navigator.pushReplacement(
-                        //   context,
-                        //   MaterialPageRoute(
-                        //     builder: (context) => const ForgotPassword(),
-                        //   ),
-                        // );
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const Login(),
+                          ),
+                        );
                       },
                       child: Image.network(
                           "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlhQWjHTppri9oBmtb8Vl5JlmYLt6nBzbQ5w&usqp=CAU"),
                     ),
                   ),
                   SizedBox(
-                    height: 80,
-                    width: 80,
+                    height: 50,
+                    width: 50,
                     child: Image.network(
-                        "https://1000logos.net/wp-content/uploads/2016/10/Apple-Logo.png"),
+                        "https://www.shutterstock.com/image-photo/valencia-spain-march-05-2017-600nw-593485994.jpg"),
                   ),
                   SizedBox(
                     height: 50,
@@ -112,6 +150,8 @@ class _SignUpState extends State<SignUp> {
             Container(
               margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
               child: TextFormField(
+                autofocus: false,
+                // initialValue: " ",
                 decoration: const InputDecoration(
                   filled: true,
                   prefixIcon: Icon(Icons.account_circle),
@@ -132,6 +172,8 @@ class _SignUpState extends State<SignUp> {
             Container(
               margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
               child: TextFormField(
+                autofocus: false,
+                // initialValue:" " ,
                 decoration: const InputDecoration(
                   filled: true,
                   prefixIcon: Icon(Icons.email),
@@ -144,7 +186,7 @@ class _SignUpState extends State<SignUp> {
                   if (value == null || value.isEmpty) {
                     return "Please Enter Email Address";
                   } else if (!value.contains('@')) {
-                    return "Enter Email Address";
+                    return " please Enter valid Email Address";
                   }
                   return null;
                 },
@@ -154,11 +196,13 @@ class _SignUpState extends State<SignUp> {
             Container(
               margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
               child: TextFormField(
+                autofocus: false,
+                // initialValue:" " ,
                 decoration: const InputDecoration(
                   filled: true,
                   prefixIcon: Icon(Icons.phone),
                   labelText: "Phone Number",
-                  hintText: "Enter the Phone Number",
+                  hintText: " please Enter the Phone Number",
                   border: OutlineInputBorder(),
                 ),
                 keyboardType: TextInputType.emailAddress,
@@ -166,7 +210,7 @@ class _SignUpState extends State<SignUp> {
                   if (value == null || value.isEmpty) {
                     return "Please Enter Phone Number";
                   } else if (value.length != 10) {
-                    return "Enter Phone Number";
+                    return "please Enter Phone Number";
                   }
                   return null;
                 },
@@ -176,6 +220,8 @@ class _SignUpState extends State<SignUp> {
             Container(
               margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
               child: TextFormField(
+                autofocus: false,
+                // initialValue:" " ,
                 obscureText: true,
                 decoration: const InputDecoration(
                   filled: true,
@@ -189,7 +235,7 @@ class _SignUpState extends State<SignUp> {
                   if (value == null || value.isEmpty) {
                     return "Please Enter Password";
                   } else if (value.length <= 6) {
-                    return "Enter Valid Password";
+                    return "Enter strong Password";
                   }
                   return null;
                 },
@@ -199,6 +245,8 @@ class _SignUpState extends State<SignUp> {
             Container(
               margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
               child: TextFormField(
+                autofocus: false,
+                // initialValue:" " ,
                 obscureText: true,
                 decoration: const InputDecoration(
                   filled: true,
@@ -211,7 +259,7 @@ class _SignUpState extends State<SignUp> {
                   if (value == null || value.isEmpty) {
                     return "Please Enter Re-enter Password";
                   } else if (value.length <= 6) {
-                    return "Enter Valid Re-enter Password";
+                    return "Enter strong Re-enter Password";
                   }
                   return null;
                 },
@@ -224,7 +272,14 @@ class _SignUpState extends State<SignUp> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const Login(),
+                        ),
+                      );
+                    },
                     child: const Text(
                       "Login",
                       style: TextStyle(decoration: TextDecoration.underline),
@@ -245,6 +300,12 @@ class _SignUpState extends State<SignUp> {
                             phoneNumber = phoneNumberController.text;
                             password = passwordController.text;
                             reEnteredPassword = reEnteredPasswodController.text;
+                            addUser();
+                            clearText();
+                            ScaffoldMessenger.of(context).showSnackBar(
+                             const SnackBar(content: 
+                              Text("User Register Successfully"))
+                            );
                             Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(

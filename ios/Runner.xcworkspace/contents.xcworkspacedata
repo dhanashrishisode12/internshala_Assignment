@@ -5,6 +5,9 @@
       location = "group:Runner.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:/Users/pavan/Documents/Dhanashri_Shisode/Flutter Projects/interenshala_assignment/ios/Pods/pods.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:Pods/Pods.xcodeproj">
    </FileRef>
 </Workspace>

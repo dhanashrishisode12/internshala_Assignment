@@ -1,3 +1,5 @@
+import "package:firebase_auth/firebase_auth.dart";
+import "package:firebase_core/firebase_core.dart";
 import "package:flutter/material.dart";
 import "package:interenshala_assignment/Pages/forgot_password.dart";
 import "package:interenshala_assignment/RegisterPages/signup.dart";
@@ -125,19 +127,29 @@ class _LoginState extends State<Login> {
                     Color.fromARGB(255, 201, 94, 61),
                   ),
                 ),
-                onPressed: () {
-                  if (_formKey.currentState!.validate()) {
-                    setState(
-                      () {
-                        email = emailController.text;
-                        password = passwordController.text;
-                        Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const ForgotPassword()),
-                        );
-                      },
+                onPressed: () async {
+                  try {
+                    await Firebase.initializeApp();
+                    UserCredential user = await FirebaseAuth.instance
+                        .createUserWithEmailAndPassword(
+                            email: emailController.text,
+                            password: passwordController.text);
+                            print("login successfully");
+                    // User? updateUser = FirebaseAuth.instance.currentUser;
+                    // updateUser.updateProfile(displayName: full)
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const ForgotPassword()),
                     );
+                  } on FirebaseAuthException catch (e) {
+                    if (e.code == "weak password") {
+                      print("The password provided is too weak ");
+                    } else if (e.code == "email already in use") {
+                      print("The account  already exists for that email. ");
+                    }
+                  } catch (e) {
+                    print(e.toString());
                   }
                 },
                 child: const Text(
@@ -180,10 +192,10 @@ class _LoginState extends State<Login> {
                     ),
                   ),
                   SizedBox(
-                    height: 80,
-                    width: 80,
+                    height: 60,
+                    width: 60,
                     child: Image.network(
-                        "https://1000logos.net/wp-content/uploads/2016/10/Apple-Logo.png"),
+                        "https://www.shutterstock.com/image-photo/valencia-spain-march-05-2017-600nw-593485994.jpg"),
                   ),
                   SizedBox(
                     height: 50,

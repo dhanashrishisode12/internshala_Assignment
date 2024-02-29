@@ -1,0 +1,6 @@
+version: "Apple Swift version 5.7 (swiftlang-5.7.0.127.4 clang-1400.0.29.50)"
+options: "981331d3efc74aa74041590fd649a73970deeb552058e5c4c8de96c8e62673c5"
+build_start_time: [1709058193, 817049980]
+build_end_time: [1709058193, 914011955]
+inputs:
+  "/Users/pavan/Documents/Dhanashri_Shisode/Flutter Projects/interenshala_assignment/ios/Runner/AppDelegate.swift": !private [1664987363, 0]

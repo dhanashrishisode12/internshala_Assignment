@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:interenshala_assignment/Pages/login.dart';
 
 class DoneScreen extends StatefulWidget {
   const DoneScreen({super.key});
@@ -47,7 +48,13 @@ class _DoneScreenState extends State<DoneScreen> {
                   Color.fromARGB(255, 201, 94, 61),
                 ),
               ),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const Login()),
+                            );
+              },
               child: const Text(
                 "Got it!",
                 style: TextStyle(color: Colors.white, fontSize: 15),
