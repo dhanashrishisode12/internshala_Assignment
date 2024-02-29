@@ -5,7 +5,6 @@
 
 
 import 'package:flutter/material.dart';
-import 'package:interenshala_assignment/Pages/login.dart';
 import 'package:interenshala_assignment/Pages/verify_otp.dart';
 
 class ForgotPassword extends StatefulWidget {
@@ -50,7 +49,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                       Navigator.pushReplacement(
                                  context,
                                  MaterialPageRoute(
-                                     builder: (context) => const Login()),
+                                     builder: (context) => const VerifyOtp()),
                                );
                     },
                     child: const Text(

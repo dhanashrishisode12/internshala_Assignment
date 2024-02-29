@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:interenshala_assignment/RegisterPages/signup.dart';
+import 'package:interenshala_assignment/Pages/login.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 
 class OnboardingScreen extends StatefulWidget {
@@ -119,7 +119,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(
-        builder: (context) => const SignUp(),
+        builder: (context) => const Login(),
       ),
     );
   }

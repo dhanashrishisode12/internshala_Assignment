@@ -137,6 +137,11 @@ class _LoginState extends State<Login> {
                             print("login successfully");
                     // User? updateUser = FirebaseAuth.instance.currentUser;
                     // updateUser.updateProfile(displayName: full)
+                    // ScaffoldMessenger.of(context).showSnackBar(
+                    //          const SnackBar(content: 
+                    //           Text("User Register Successfully")),
+                    // );
+                  
                     Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(

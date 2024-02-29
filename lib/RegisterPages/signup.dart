@@ -28,7 +28,6 @@ class _SignUpState extends State<SignUp> {
   CollectionReference farmer = FirebaseFirestore.instance.collection('farmer');
 
   Future<void> addUser() {
-    print("pavan addUser");
     return farmer
         .add({
           'fullname': fullName,

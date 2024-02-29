@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:interenshala_assignment/OnBoardingPages/onboarding_screen.dart';
-import 'package:interenshala_assignment/Pages/forgot_password.dart';
-import 'package:interenshala_assignment/Pages/login.dart';
 import 'package:interenshala_assignment/singleton.dart';
 
 void main() async {
