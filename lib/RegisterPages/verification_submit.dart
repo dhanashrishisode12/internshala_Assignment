@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:interenshala_assignment/RegisterPages/done_screen.dart';
+import 'package:interenshala_assignment/Pages/login.dart';
 
 class VerificationSubmit extends StatefulWidget {
   const VerificationSubmit({super.key});
@@ -122,7 +122,7 @@ class _VerificationSubmitState extends State<VerificationSubmit> {
                             Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const DoneScreen()),
+                                  builder: (context) => const Login()),
                             );
                           },
                         );
