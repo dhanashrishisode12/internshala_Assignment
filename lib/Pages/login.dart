@@ -3,6 +3,8 @@ import "package:firebase_core/firebase_core.dart";
 import "package:flutter/material.dart";
 import "package:interenshala_assignment/Pages/forgot_password.dart";
 import "package:interenshala_assignment/RegisterPages/signup.dart";
+import "package:interenshala_assignment/Services/facebook_auth.dart";
+import "package:interenshala_assignment/Services/ggogleauthservice.dart";
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -134,14 +136,13 @@ class _LoginState extends State<Login> {
                         .createUserWithEmailAndPassword(
                             email: emailController.text,
                             password: passwordController.text);
-                            print("login successfully");
+                    print("login successfully");
                     // User? updateUser = FirebaseAuth.instance.currentUser;
                     // updateUser.updateProfile(displayName: full)
                     // ScaffoldMessenger.of(context).showSnackBar(
-                    //          const SnackBar(content: 
+                    //          const SnackBar(content:
                     //           Text("User Register Successfully")),
                     // );
-                  
                     Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
@@ -183,12 +184,13 @@ class _LoginState extends State<Login> {
                   SizedBox(
                     height: 60,
                     width: 60,
-                    child: InkWell(
+                    child: GestureDetector(
                       onTap: () {
+                        // AuthService().signInWithGoogle();
                         Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const ForgotPassword(),
+                            builder: (context) => const MyWidget(),
                           ),
                         );
                       },
@@ -199,14 +201,34 @@ class _LoginState extends State<Login> {
                   SizedBox(
                     height: 60,
                     width: 60,
-                    child: Image.network(
-                        "https://www.shutterstock.com/image-photo/valencia-spain-march-05-2017-600nw-593485994.jpg"),
+                    child: GestureDetector(
+                      onTap: () {
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const MyWidget(),
+                          ),
+                        );
+                      },
+                      child: Image.network(
+                          "https://www.shutterstock.com/image-photo/valencia-spain-march-05-2017-600nw-593485994.jpg"),
+                    ),
                   ),
                   SizedBox(
                     height: 50,
                     width: 50,
-                    child: Image.network(
-                        "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Facebook_Logo_%282019%29.png/1024px-Facebook_Logo_%282019%29.png"),
+                    child: GestureDetector(
+                      onTap: () {
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const FacebookAuth(),
+                          ),
+                        );
+                      },
+                      child: Image.network(
+                          "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Facebook_Logo_%282019%29.png/1024px-Facebook_Logo_%282019%29.png"),
+                    ),
                   ),
                 ],
               ),
